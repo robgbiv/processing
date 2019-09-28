@@ -30,7 +30,7 @@ void drawSquares() {
       float startY = initialOffset + (i * maxDivisible) + (i * gap); 
       squares[squareNumber] = new Square(startX, startY, maxDivisible, colour);
       squares[squareNumber].display();
-      //squares[squareNumber].fade();
+      squares[squareNumber].fade();
       squareNumber++;
     }
   }
