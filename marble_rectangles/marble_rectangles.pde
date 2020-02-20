@@ -2,11 +2,11 @@ int marbleCount;
 Marble[] marbles;
 
 void setup() {
-  size(1080, 1080);
+  size(1024, 1024);
   background(20);
   noLoop();
 
-  marbleCount = 10;
+  marbleCount = 8;
   float marbleSize = 32;
   float marbleGap = marbleSize;
   marbles = new Marble[marbleCount];
@@ -14,8 +14,8 @@ void setup() {
   float startX = (width / 2) - ((marbleCount * marbleSize) + (marbleCount * marbleGap)) / 2;
   float startY = (height / 2) - (marbleSize / 2);
 
-  noStroke();
-  fill(240);
+  /* noStroke(); */
+  /* fill(240); */
   /* rect(0, 0, width, height / 2); */
 
   for (int i = 0; i < marbleCount; i++) {
@@ -23,6 +23,8 @@ void setup() {
     startX += marbleSize + marbleGap;
     marbles[i].show();
   }
+
+  /* save("marbles.png"); */
 }
 
 void draw() {
@@ -49,16 +51,15 @@ class Marble {
 
   void show() {
     stroke(255);
-    /* noFill(); */
-    /* noStroke(); */
-    /* int index = int(random(colors.length)); */
-    /* fill(colors[index]); */
     noFill();
+    int index = int(random(colors.length));
+    /* fill(colors[index]); */
+    /* noFill(); */
     rect(x, y, size, size);
 
-    /* five(x, y, size); */
-    int r = int(random(6));
     stroke(255);
+    /* six(x, y, size); */
+    int r = int(random(10));
     if (r == 0) {
       zero(x, y, size);
     } else if (r == 1) {
@@ -71,6 +72,16 @@ class Marble {
       four(x, y, size);
     } else if (r == 5) {
       five(x, y, size);
+    } else if (r == 6) {
+      six(x, y, size);
+    } else if (r == 7) {
+      seven(x, y, size);
+    } else if (r == 8) {
+      eight(x, y, size);
+    } else if (r == 9) {
+      nine(x, y, size);
+    } else if (r == 10) {
+      ten(x, y, size);
     }
 
     float cells = 5;
@@ -112,5 +123,38 @@ class Marble {
     line(x + halfSize, y + halfSize, x + size, y + size);
     line(x + size, y, x + halfSize, y + halfSize);
     line(x + halfSize, y + size, x + size, y + size);
+  }
+
+  void six(float x, float y, float size) {
+    float halfSize = size / 2;
+    line(x, y, x + size, y + size);
+    line(x + size, y, x, y + size);
+  }
+
+  void seven(float x, float y, float size) {
+    float halfSize = size / 2;
+    line(x + halfSize, y + halfSize, x + size, y + halfSize);
+    line(x + halfSize, y + halfSize, x + size, y + size);
+    line(x + halfSize, y, x + size, y + halfSize);
+  }
+
+  void eight(float x, float y, float size) {
+    float halfSize = size / 2;
+    line(x, y + size, x + halfSize, y + halfSize);
+    line(x + halfSize, y, x + halfSize, y + halfSize);
+  }
+
+  void nine(float x, float y, float size) {
+    float halfSize = size / 2;
+    line(x + size, y, x + halfSize, y + halfSize);
+    line(x + halfSize, y + size, x + size, y + size);
+    line(x + halfSize, y, x + halfSize, y + halfSize);
+    line(x + halfSize, y + halfSize, x + size, y + halfSize);
+  }
+
+  void ten(float x, float y, float size) {
+    float halfSize = size / 2;
+    line(x + halfSize, y + halfSize, x + size, y + halfSize);
+    line(x, y + size, x + size, y);
   }
 }
